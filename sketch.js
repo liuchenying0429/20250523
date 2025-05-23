@@ -35,6 +35,9 @@ function draw() {
     const indices2 = [76, 77, 90, 180, 85, 16, 315, 404, 320, 307, 306, 408, 304, 303, 302, 11, 72, 73, 74, 184];
     fillShape(keypoints, indices2);
     drawLines(keypoints, indices2);
+
+    // 填充第一組與第二組之間的區域
+    fillBetweenShapes(keypoints, indices1, indices2);
   }
 }
 
@@ -55,6 +58,24 @@ function fillShape(keypoints, indices) {
   for (let i = 0; i < indices.length; i++) {
     const point = keypoints[indices[i]];
     vertex(point[0], point[1]); // 繪製多邊形的頂點
+  }
+  endShape(CLOSE);
+}
+
+// 函數：填充第一組與第二組之間的區域
+function fillBetweenShapes(keypoints, indices1, indices2) {
+  fill(50, 50, 50, 200); // 設定填充顏色為深色（半透明）
+  noStroke(); // 移除邊框
+  beginShape();
+  // 繪製第一組點位
+  for (let i = 0; i < indices1.length; i++) {
+    const point = keypoints[indices1[i]];
+    vertex(point[0], point[1]);
+  }
+  // 繪製第二組點位（反向）
+  for (let i = indices2.length - 1; i >= 0; i--) {
+    const point = keypoints[indices2[i]];
+    vertex(point[0], point[1]);
   }
   endShape(CLOSE);
 }
