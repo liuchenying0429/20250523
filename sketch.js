@@ -46,6 +46,10 @@ function draw() {
     // 第四組點位編號
     const indices4 = [133, 173, 157, 158, 159, 160, 161, 246, 33, 7, 163, 144, 145, 153, 154, 155];
     drawLines(keypoints, indices4); // 繪製第四組點位的連線
+
+    // 第五組點位編號（綠色線條）
+    const indices5 = [359, 467, 260, 259, 257, 258, 286, 414, 463, 341, 256, 252, 253, 254, 339, 255];
+    drawGreenLines(keypoints, indices5);
   }
 }
 
@@ -92,6 +96,17 @@ function fillBetweenShapes(keypoints, indices1, indices2) {
 function drawPurpleLines(keypoints, indices) {
   stroke(128, 0, 128); // 設定線條顏色為紫色
   strokeWeight(5); // 設定線條粗細為5
+  for (let i = 0; i < indices.length - 1; i++) {
+    const start = keypoints[indices[i]];
+    const end = keypoints[indices[i + 1]];
+    line(start[0], start[1], end[0], end[1]);
+  }
+}
+
+// 函數：繪製綠色線條
+function drawGreenLines(keypoints, indices) {
+  stroke(0, 255, 0); // 設定線條顏色為綠色
+  strokeWeight(10); // 設定線條粗細為10
   for (let i = 0; i < indices.length - 1; i++) {
     const start = keypoints[indices[i]];
     const end = keypoints[indices[i + 1]];
