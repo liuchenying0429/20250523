@@ -33,7 +33,7 @@ function draw() {
 
     // 第二組點位編號
     const indices2 = [76, 77, 90, 180, 85, 16, 315, 404, 320, 307, 306, 408, 304, 303, 302, 11, 72, 73, 74, 184];
-    fillShape(keypoints, indices2, [0, 0, 255, 150]); // 填充藍色
+    fillShape(keypoints, indices2, [255, 255, 0, 150]); // 填充黃色
     drawLines(keypoints, indices2);
 
     // 填充第一組與第二組之間的區域
@@ -45,6 +45,7 @@ function draw() {
 
     // 第四組點位編號
     const indices4 = [133, 173, 157, 158, 159, 160, 161, 246, 33, 7, 163, 144, 145, 153, 154, 155];
+    fillShape(keypoints, indices4, [0, 0, 255, 150]); // 填充藍色
     drawLines(keypoints, indices4); // 繪製第四組點位的連線
 
     // 第五組點位編號（綠色線條）
@@ -95,7 +96,7 @@ function fillBetweenShapes(keypoints, indices1, indices2) {
 // 函數：繪製紫色線條
 function drawPurpleLines(keypoints, indices) {
   stroke(128, 0, 128); // 設定線條顏色為紫色
-  strokeWeight(5); // 設定線條粗細為5
+  strokeWeight(10); // 設定線條粗細為5
   for (let i = 0; i < indices.length - 1; i++) {
     const start = keypoints[indices[i]];
     const end = keypoints[indices[i + 1]];
