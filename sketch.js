@@ -96,7 +96,7 @@ function fillBetweenShapes(keypoints, indices1, indices2) {
 // 函數：繪製紫色線條
 function drawPurpleLines(keypoints, indices) {
   stroke(128, 0, 128); // 設定線條顏色為紫色
-  strokeWeight(10); // 設定線條粗細為5
+  strokeWeight(10); // 設定線條粗細為10
   for (let i = 0; i < indices.length - 1; i++) {
     const start = keypoints[indices[i]];
     const end = keypoints[indices[i + 1]];
