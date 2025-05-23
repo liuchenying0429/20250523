@@ -38,6 +38,10 @@ function draw() {
 
     // 填充第一組與第二組之間的區域
     fillBetweenShapes(keypoints, indices1, indices2);
+
+    // 第三組點位編號（紫色線條）
+    const indices3 = [243, 190, 56, 28, 27, 29, 30, 247, 130, 25, 110, 24, 23, 22, 26, 112];
+    drawPurpleLines(keypoints, indices3);
   }
 }
 
@@ -78,4 +82,15 @@ function fillBetweenShapes(keypoints, indices1, indices2) {
     vertex(point[0], point[1]);
   }
   endShape(CLOSE);
+}
+
+// 函數：繪製紫色線條
+function drawPurpleLines(keypoints, indices) {
+  stroke(128, 0, 128); // 設定線條顏色為紫色
+  strokeWeight(5); // 設定線條粗細為5
+  for (let i = 0; i < indices.length - 1; i++) {
+    const start = keypoints[indices[i]];
+    const end = keypoints[indices[i + 1]];
+    line(start[0], start[1], end[0], end[1]);
+  }
 }
